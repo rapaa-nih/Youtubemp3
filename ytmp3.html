@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>YouTube MP3 Downloader</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:Arial, sans-serif;
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color:white;
+}
+
+.box{
+  width:340px;
+  padding:25px;
+  background:rgba(0,0,0,0.6);
+  border-radius:15px;
+  text-align:center;
+  box-shadow:0 0 25px cyan;
+}
+
+h1{
+  margin-bottom:10px;
+}
+
+input{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:8px;
+  outline:none;
+  margin-top:15px;
+}
+
+button{
+  width:100%;
+  padding:12px;
+  margin-top:15px;
+  border:none;
+  border-radius:8px;
+  font-weight:bold;
+  cursor:pointer;
+  background:cyan;
+}
+
+button:hover{
+  background:#00e5ff;
+}
+
+.note{
+  font-size:12px;
+  opacity:0.8;
+  margin-top:15px;
+}
+
+footer{
+  font-size:11px;
+  margin-top:10px;
+  opacity:0.6;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+  <h1>🎵 YouTube MP3</h1>
+  <p>Download MP3 dengan mudah</p>
+
+  <input type="text" id="yt" placeholder="Paste link YouTube di sini">
+
+  <button onclick="download()">Download MP3</button>
+
+  <div class="note" id="status"></div>
+  <footer>Fast • Simple • Free</footer>
+</div>
+
+<script>
+function download(){
+  const url = document.getElementById("yt").value;
+  const status = document.getElementById("status");
+
+  if(url === ""){
+    status.innerHTML = "❌ Masukkan link YouTube!";
+    return;
+  }
+
+  status.innerHTML = "⏳ Mengalihkan ke halaman download...";
+
+  // Redirect ke layanan converter online
+  window.open(
+    "https://loader.to/api/button/?url=" + encodeURIComponent(url) + "&f=mp3",
+    "_blank"
+  );
+}
+</script>
+
+</body>
+</html>
